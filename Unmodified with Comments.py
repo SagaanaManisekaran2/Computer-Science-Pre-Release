@@ -48,7 +48,7 @@ def CreateNewBoard(Board):
 
 
 def AddPlayerA(Board, A):
-    for Index in range(1, NUMBER_OF_PIECES + 1):  # - Starts at 1 to jump stats index
+    for Index in range(1, NUMBER_OF_PIECES + 1): #the range starts from 1 this mean that it would not include the stats info about player A
         PieceRow = A[Index][ROW]  # - Extracts piece row from list A
         PieceColumn = A[Index][COLUMN]  # - Extracts piece column from list A
         PieceDame = A[Index][DAME]  # - Extracts dame status from list A
@@ -61,15 +61,15 @@ def AddPlayerA(Board, A):
 
 
 def AddPlayerB(Board, B):
-    for Index in range(1, NUMBER_OF_PIECES + 1):  # - Starts at 1 to jump stats index
-        PieceRow = B[Index][ROW]  # - Extracts piece row from list A
-        PieceColumn = B[Index][COLUMN]  # - Extracts piece column from list A
-        PieceDame = B[Index][DAME]  # - Extracts dame status from list A
+    for Index in range(1, NUMBER_OF_PIECES + 1):
+        PieceRow = B[Index][ROW]
+        PieceColumn = B[Index][COLUMN]
+        PieceDame = B[Index][DAME]
         if PieceRow > -1:
             if PieceDame == 1:
-                Board[PieceRow][PieceColumn] = 'B' + str(Index)  # - Capitalises if piece is a Dame
+                Board[PieceRow][PieceColumn] = 'B' + str(Index)
             else:
-                Board[PieceRow][PieceColumn] = 'b' + str(Index)  # - Else a regular piece
+                Board[PieceRow][PieceColumn] = 'b' + str(Index)
     return Board
 
 
@@ -161,9 +161,9 @@ def ClearList(ListOfMoves):
 
 def ValidMove(Board, NewRow, NewColumn):
     Valid = False
-    if NewRow in range(BOARD_SIZE) and NewColumn in range(BOARD_SIZE):  # Checks if position exists in board
+    if NewRow in range(BOARD_SIZE) and NewColumn in range(BOARD_SIZE):
         if Board[NewRow][NewColumn] == SPACE:
-            Valid = True  # - If move location is a space then it is valid
+            Valid = True
     return Valid
 
 
@@ -204,7 +204,7 @@ def ListPossibleMoves(Board, PlayersPieces, NextPlayer, ListOfMoves):
         NewRow = CurrentRow + Direction  # - Finds new possible row of piece
         LeftColumn = CurrentColumn - 1  # - Finds new possible left column
         RightColumn = CurrentColumn + 1  # - Finds new possible right column
-        if ValidMove(Board, NewRow, LeftColumn):  # - Checks if the left column move is a space or exists on board
+        if ValidMove(Board, NewRow, LeftColumn):
             print(Piece, ' can move to ', NewRow, ' , ', LeftColumn)
             NumberOfMoves += 1
             ListOfMoves[NumberOfMoves].Piece = Piece
